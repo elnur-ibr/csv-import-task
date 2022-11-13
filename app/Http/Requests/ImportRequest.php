@@ -27,7 +27,6 @@ class ImportRequest extends FormRequest
      */
     public function rules()
     {
-        //dd(implode(',', Delimiters::DELIMITORS), Delimiters::DELIMITORS);
         return [
             'setting'   => 'required|exists:settings,id',
             'csv'       => ['required', 'file', 'mimes:csv,txt', new Utf8/*, new Delimiter*/],
