@@ -16,15 +16,14 @@ class SettingSeeder extends Seeder
     {
         Setting::create([
             'database_name' => 'csv_import',
-            'table_name'    => 'csv_import',
+            'table_name'    => 'users',
             'columns'       => [
-                'firstname',
-                'lastname',
-                'email',
-                'email',
-                'date_of_birth',
-                'birthplace',
-                ]
+                'firstname'     => 'required|string',
+                'lastname'      => 'required|string',
+                'email'         => 'required|email',
+                'date_of_birth' => 'required|date',
+                'birthplace'    => 'required|string',
+            ]
         ]);
     }
 }
