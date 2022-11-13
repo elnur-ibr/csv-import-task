@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Delimiter;
 use App\Rules\Utf8;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,7 +27,7 @@ class ImportRequest extends FormRequest
     {
         return [
             'setting' => 'required|exists:settings,id',
-            'csv'     => ['required','file','mimes:csv', new Utf8]
+            'csv'     => ['required','file','mimes:csv,txt', new Utf8, new Delimiter]
         ];
     }
 }

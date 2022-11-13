@@ -56,4 +56,15 @@ class Setting extends Model
             . ':'
             . ucfirst($this->table_name);
     }
+
+    public function getExpectedColumnsAttribute()
+    {
+        $columns = [];
+        foreach($this->columns as $key => $column) {
+            $columns [$column['order']] = $key;
+        }
+        ksort($columns);
+
+        return $columns;
+    }
 }

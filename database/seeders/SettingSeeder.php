@@ -18,11 +18,12 @@ class SettingSeeder extends Seeder
             'database_name' => 'csv_import',
             'table_name'    => 'users',
             'columns'       => [
-                'firstname'     => 'required|string',
-                'lastname'      => 'required|string',
-                'email'         => 'required|email',
-                'date_of_birth' => 'required|date',
-                'birthplace'    => 'required|string',
+                'user_id'       => ['rules' => 'required|integer|min:1', 'order' => 1],
+                'firstname'     => ['rules' => 'required|string', 'order' => 2],
+                'lastname'      => ['rules' => 'required|string', 'order' => 3],
+                'email'         => ['rules' => 'required|email', 'order' => 4],
+                'date_of_birth' => ['rules' => 'required|date', 'order' => 5],
+                'birthplace'    => ['rules' => 'required|string', 'order' => 6],
             ]
         ]);
     }
