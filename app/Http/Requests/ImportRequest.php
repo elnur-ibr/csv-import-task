@@ -4,7 +4,9 @@ namespace App\Http\Requests;
 
 use App\Rules\Delimiter;
 use App\Rules\Utf8;
+use App\Services\Delimiters;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ImportRequest extends FormRequest
 {
@@ -25,9 +27,13 @@ class ImportRequest extends FormRequest
      */
     public function rules()
     {
+        //dd(implode(',', Delimiters::DELIMITORS), Delimiters::DELIMITORS);
         return [
-            'setting' => 'required|exists:settings,id',
-            'csv'     => ['required','file','mimes:csv,txt', new Utf8, new Delimiter]
+            'setting'   => 'required|exists:settings,id',
+            'csv'       => ['required', 'file', 'mimes:csv,txt', new Utf8/*, new Delimiter*/],
+            'delimiter' => ['required', 'string',
+                            Rule::in(Delimiters::DELIMITORS),
+            ]
         ];
     }
 }

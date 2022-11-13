@@ -52,19 +52,42 @@ class Setting extends Model
      */
     public function getLabelAttribute(): string
     {
-        return ucfirst($this->database_name)
+        return $this->database_name
             . ':'
-            . ucfirst($this->table_name);
+            . '('.$this->table_name.')';
     }
 
-    public function getExpectedColumnsAttribute()
+    /**
+     * @return array
+     */
+    public function getExpectedColumnsAttribute(): array
     {
         $columns = [];
-        foreach($this->columns as $key => $column) {
+        foreach ($this->columns as $key => $column) {
             $columns [$column['order']] = $key;
         }
         ksort($columns);
 
         return $columns;
     }
+
+    /**
+     * @return array|mixed
+     */
+    public function getRulesattribute()
+    {
+        if ($this->savedRules) {
+            return $this->savedRules;
+        } else {
+            $rules = [];
+            foreach ($this->columns as $key => $column) {
+                $rules [$key] = $column['rules'];
+            }
+
+            $this->setAttribute('savedRules', $rules);
+
+            return $rules;
+        }
+    }
+
 }

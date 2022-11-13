@@ -70,6 +70,13 @@ return [
             'days' => 14,
         ],
 
+        'invalid-rows' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/invalid-rows.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
+        ],
+
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),

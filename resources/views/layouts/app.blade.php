@@ -39,7 +39,7 @@
                 <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="">{{ __('Settings') }}</a>
+                        <a class="nav-link" href="{{route('setting.index')}}">{{ __('Settings') }}</a>
                     </li>
 
                 </ul>
@@ -48,6 +48,7 @@
     </nav>
 
     <main class="py-4">
+
         @yield('content')
     </main>
 </div>

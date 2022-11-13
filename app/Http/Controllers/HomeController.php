@@ -16,6 +16,6 @@ class HomeController extends Controller
     {
         $settings = Setting::all();
 
-        return view('home', compact('settings'));
+        return view('import', compact('settings'));
     }
 }
